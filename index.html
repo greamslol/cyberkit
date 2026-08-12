@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CyberKit</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <h1>CyberKit</h1>
+        <p class="subtitle">Browser-based cybersecurity utility toolkit</p>
+      </div>
+      <label class="search-wrap" for="tool-search">
+        <span class="sr-only">Search tools</span>
+        <input id="tool-search" type="search" placeholder="Search tools..." />
+      </label>
+    </header>
+
+    <nav id="tool-nav" class="tool-nav" aria-label="Tool navigation"></nav>
+
+    <main class="tool-grid" id="tool-grid">
+      <section class="tool-card" id="password-tool" data-tool-name="password strength checker secure password generator">
+        <h2>Password Tools</h2>
+        <div class="tool-block">
+          <h3>Password Strength Checker</h3>
+          <label for="password-input">Password</label>
+          <input id="password-input" type="password" autocomplete="off" />
+          <meter id="password-meter" min="0" max="4" value="0"></meter>
+          <p id="password-strength-text">Strength: Too weak</p>
+        </div>
+
+        <div class="tool-block">
+          <h3>Secure Password Generator</h3>
+          <div class="generator-grid">
+            <label for="password-length">Length</label>
+            <input id="password-length" type="number" min="8" max="128" value="16" />
+            <label><input id="gen-lower" type="checkbox" checked /> Lowercase</label>
+            <label><input id="gen-upper" type="checkbox" checked /> Uppercase</label>
+            <label><input id="gen-number" type="checkbox" checked /> Numbers</label>
+            <label><input id="gen-symbol" type="checkbox" checked /> Symbols</label>
+          </div>
+          <div class="actions">
+            <button id="generate-password" type="button">Generate</button>
+            <button id="copy-generated-password" type="button">Copy</button>
+          </div>
+          <label for="generated-password">Generated password</label>
+          <input id="generated-password" type="text" readonly />
+        </div>
+        <p class="tool-message" aria-live="polite"></p>
+      </section>
+
+      <section class="tool-card" id="hash-tool" data-tool-name="sha-256 hash generator">
+        <h2>SHA-256 Hash Generator</h2>
+        <label for="hash-input">Input</label>
+        <textarea id="hash-input" rows="5"></textarea>
+        <div class="actions">
+          <button id="hash-generate" type="button">Generate hash</button>
+          <button id="copy-hash" type="button">Copy</button>
+        </div>
+        <label for="hash-output">SHA-256 (hex)</label>
+        <textarea id="hash-output" rows="3" readonly></textarea>
+        <p class="tool-message" aria-live="polite"></p>
+      </section>
+
+      <section class="tool-card" id="base64-tool" data-tool-name="base64 encoder decoder">
+        <h2>Base64 Encoder/Decoder</h2>
+        <label for="base64-input">Input</label>
+        <textarea id="base64-input" rows="4"></textarea>
+        <div class="actions">
+          <button id="base64-encode" type="button">Encode</button>
+          <button id="base64-decode" type="button">Decode</button>
+          <button id="copy-base64-output" type="button">Copy</button>
+        </div>
+        <label for="base64-output">Output</label>
+        <textarea id="base64-output" rows="4" readonly></textarea>
+        <p class="tool-message" aria-live="polite"></p>
+      </section>
+
+      <section class="tool-card" id="url-tool" data-tool-name="url encoder decoder">
+        <h2>URL Encoder/Decoder</h2>
+        <label for="url-input">Input</label>
+        <textarea id="url-input" rows="4"></textarea>
+        <div class="actions">
+          <button id="url-encode" type="button">Encode</button>
+          <button id="url-decode" type="button">Decode</button>
+          <button id="copy-url-output" type="button">Copy</button>
+        </div>
+        <label for="url-output">Output</label>
+        <textarea id="url-output" rows="4" readonly></textarea>
+        <p class="tool-message" aria-live="polite"></p>
+      </section>
+
+      <section class="tool-card" id="jwt-tool" data-tool-name="jwt decoder token json">
+        <h2>JWT Decoder</h2>
+        <label for="jwt-input">JWT token</label>
+        <textarea id="jwt-input" rows="4"></textarea>
+        <div class="actions">
+          <button id="jwt-decode" type="button">Decode</button>
+          <button id="copy-jwt-payload" type="button">Copy payload</button>
+        </div>
+        <label for="jwt-header">Header</label>
+        <textarea id="jwt-header" rows="3" readonly></textarea>
+        <label for="jwt-payload">Payload</label>
+        <textarea id="jwt-payload" rows="4" readonly></textarea>
+        <label for="jwt-signature">Signature</label>
+        <input id="jwt-signature" type="text" readonly />
+        <p class="tool-message" aria-live="polite"></p>
+      </section>
+
+      <section class="tool-card" id="hex-ascii-tool" data-tool-name="hex ascii converter">
+        <h2>Hex/ASCII Converter</h2>
+        <label for="hex-ascii-input">Input</label>
+        <textarea id="hex-ascii-input" rows="4"></textarea>
+        <div class="actions">
+          <button id="ascii-to-hex" type="button">ASCII → Hex</button>
+          <button id="hex-to-ascii" type="button">Hex → ASCII</button>
+          <button id="copy-hex-ascii-output" type="button">Copy</button>
+        </div>
+        <label for="hex-ascii-output">Output</label>
+        <textarea id="hex-ascii-output" rows="4" readonly></textarea>
+        <p class="tool-message" aria-live="polite"></p>
+      </section>
+
+      <section class="tool-card" id="binary-decimal-tool" data-tool-name="binary decimal converter">
+        <h2>Binary/Decimal Converter</h2>
+        <label for="binary-decimal-input">Input</label>
+        <input id="binary-decimal-input" type="text" />
+        <div class="actions">
+          <button id="binary-to-decimal" type="button">Binary → Decimal</button>
+          <button id="decimal-to-binary" type="button">Decimal → Binary</button>
+          <button id="copy-binary-decimal-output" type="button">Copy</button>
+        </div>
+        <label for="binary-decimal-output">Output</label>
+        <input id="binary-decimal-output" type="text" readonly />
+        <p class="tool-message" aria-live="polite"></p>
+      </section>
+
+      <section class="tool-card" id="timestamp-tool" data-tool-name="unix timestamp converter epoch date">
+        <h2>Unix Timestamp Converter</h2>
+        <label for="timestamp-unix">Unix timestamp (seconds)</label>
+        <input id="timestamp-unix" type="text" />
+        <label for="timestamp-date">Date/time</label>
+        <input id="timestamp-date" type="datetime-local" />
+        <div class="actions">
+          <button id="unix-to-date" type="button">Unix → Date</button>
+          <button id="date-to-unix" type="button">Date → Unix</button>
+          <button id="timestamp-now" type="button">Use current time</button>
+          <button id="copy-timestamp-output" type="button">Copy unix</button>
+        </div>
+        <p id="timestamp-output"></p>
+        <p class="tool-message" aria-live="polite"></p>
+      </section>
+
+      <section class="tool-card" id="regex-tool" data-tool-name="regex tester regular expression">
+        <h2>Regex Tester</h2>
+        <label for="regex-pattern">Pattern</label>
+        <input id="regex-pattern" type="text" placeholder="Example: \b[a-z]+\b" />
+        <label for="regex-flags">Flags (gimuy)</label>
+        <input id="regex-flags" type="text" value="g" maxlength="6" />
+        <label for="regex-input">Test text</label>
+        <textarea id="regex-input" rows="4"></textarea>
+        <div class="actions">
+          <button id="regex-run" type="button">Run test</button>
+        </div>
+        <label for="regex-output">Matches</label>
+        <textarea id="regex-output" rows="4" readonly></textarea>
+        <p class="tool-message" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Disclaimer: CyberKit is intended for defensive security workflows and educational use only.
+      </p>
+    </footer>
+
+    <script type="module" src="./js/app.js"></script>
+  </body>
+</html>
