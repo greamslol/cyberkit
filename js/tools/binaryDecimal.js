@@ -22,7 +22,8 @@ export function initBinaryDecimalTool(container) {
       return;
     }
 
-    output.value = (Number.parseInt(value, 10) >>> 0).toString(2);
+    const decimal = Number.parseInt(value, 10);
+    output.value = decimal < 0 ? `-${Math.abs(decimal).toString(2)}` : decimal.toString(2);
     setMessage(container, 'Converted decimal to binary.', 'success');
   });
 
